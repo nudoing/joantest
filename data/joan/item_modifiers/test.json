@@ -1,0 +1,4 @@
+{
+  "function": "minecraft:set_nbt",
+  "tag": "{ChargedProjectiles:[{id:\"minecraft:arrow\",Count:1b}],Charged:1b ,AttributeModifiers:[{AttributeName:\"generic.attack_speed\",Amount:-100,Operation:0,Slot:\"mainhand\",UUID:[I;-1325817302,-411482978,-1222952476,823678823]}]}"
+}

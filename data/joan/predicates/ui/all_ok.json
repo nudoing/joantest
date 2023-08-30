@@ -1,0 +1,10 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "nbt": "{Inventory:[{Slot:6b,tag:{joan:{type:skill,skill:1}}},{Slot:7b,tag:{joan:{type:skill,skill:2}}},{Slot:8b,tag:{joan:{type:skill,skill:3}}}]}"
+  }
+}
+
+

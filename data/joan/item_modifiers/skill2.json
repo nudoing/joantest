@@ -1,0 +1,32 @@
+[
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"隠密\"',Lore:['[{\"text\":\"息を殺して潜む\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 1
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"脱皮\"',Lore:['[{\"text\":\"最速で行動せよ\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 2
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"連撃\"',Lore:['[{\"text\":\"攻撃こそ最大の防御\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 3
+  }]}  
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"心眼\"',Lore:['[{\"text\":\"心の目で見れば見えないものも見える\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+  "range": 4
+  }]}
+  
+]
+
+
+

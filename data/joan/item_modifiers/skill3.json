@@ -1,0 +1,30 @@
+[
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"一撃\"',Lore:['[{\"text\":\"奇襲は一瞬で行わなければならない\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 1
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"突撃\"',Lore:['[{\"text\":\"混乱に陥れろ\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 2
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"甲冑\"',Lore:['[{\"text\":\"更に硬さを求めよ\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 3
+  }]}  
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"興奮\"',Lore:['[{\"text\":\"興奮を止めることはできない\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+  "range": 4
+  }]}
+  
+]
+

@@ -1,0 +1,29 @@
+[
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"飛翔\"',Lore:['[{\"text\":\"静かに背後を襲う\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 1
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"神速\"',Lore:['[{\"text\":\"誰の目にも見えない\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 2
+  }]}
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"調整\"',Lore:['[{\"text\":\"食事は必要最低限\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+    "range": 3
+  }]}  
+  ,
+
+  { "function": "minecraft:set_nbt",
+    "tag": "{display:{Name:'\"吸血\"',Lore:['[{\"text\":\"原理は不明\"}]']}}",
+    "conditions": [{"condition": "minecraft:value_check","value": {"type": "minecraft:score","target": "this","score": "joan.job"},
+  "range": 4
+  }]}
+  
+]

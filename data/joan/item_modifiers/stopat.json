@@ -1,0 +1,15 @@
+[
+  {
+    "function": "minecraft:set_attributes",
+    "modifiers": [
+      {
+        "attribute": "minecraft:generic.attack_speed",
+        "name": "stopat",
+        "amount": 0,
+        "operation": "addition",
+        "id": "f40d6886-7d19-4bbf-833a-d027c4a1ebb8",
+        "slot": "mainhand"
+      }
+    ]
+  }
+]

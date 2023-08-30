@@ -1,0 +1,14 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:item",
+    "nbt": "{Item:{tag:{joan:{type:skill,skill:3}}}}",
+    "distance": {
+      "absolute": {
+        "min": 0,
+        "max": 5
+      }
+    }
+  }
+}

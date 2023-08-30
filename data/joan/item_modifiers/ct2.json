@@ -1,0 +1,9 @@
+{
+  "function": "minecraft:set_damage",
+  "damage": {
+    "type": "minecraft:score",
+    "target": "this",
+    "score": "joan.ct2",
+    "scale": 9.9e-7
+  }
+}

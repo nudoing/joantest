@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:reference",
+            "name": "joan:player"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "joan:inv_change"
+  }
+}
