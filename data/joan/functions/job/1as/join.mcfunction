@@ -1,10 +1,10 @@
-# 既にジョブに参加済みの場合何もしないで終わる
+# 既にこのジョブに参加済みの場合何もしないで終わる
 execute if score @s joan.job matches 1 run return 0
 
 # 参加アナウンス
 tellraw @s "JOB AS"
 
-# job番号を設定
+# プレイヤーのjob番号を設定
 scoreboard players set @s joan.job 1
 
 # CT設定など

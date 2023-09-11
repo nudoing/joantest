@@ -13,21 +13,20 @@ scoreboard players reset @a joan.use
 # 1,000,000
 # 1/1M = 0.000001
 
-# クールタイムチェック用変数
+# クールタイム用変数 (スキル使用直後 0 → スキル再使用可能 1000000)
 scoreboard objectives add joan.ct1 dummy
 scoreboard objectives add joan.ct2 dummy
 scoreboard objectives add joan.ct3 dummy
 
-# クールタイムチェック用デルタ変数
+# クールタイム用変数の1tickあたりの変化量(ジョブへの参加時に設定)
 scoreboard objectives add joan.ctd1 dummy
 scoreboard objectives add joan.ctd2 dummy
 scoreboard objectives add joan.ctd3 dummy
 
-
-# とりあえず仮代入（あとでけす）
-scoreboard players set @s joan.ctd1 12500
-scoreboard players set @s joan.ctd2 10000
-scoreboard players set @s joan.ctd3 2777
+# 例
+# scoreboard players set @s joan.ctd1 12500  # 1000000/12500=80なので 80tick(4秒)でスキル再使用可能
+# scoreboard players set @s joan.ctd2 10000
+# scoreboard players set @s joan.ctd3 2777   # 1000000/2777=360なので 360tick(18秒)でスキル再使用可能
 
 
 # UIアイテムを消去

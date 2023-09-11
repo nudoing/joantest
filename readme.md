@@ -1,18 +1,127 @@
 
 # joanをまとめて構造を変えたもの
 
-## フォルダ構成
-- advancements 　特定条件によるfunctionの呼び出し用進捗を記述
-- function
-  - job　各ジョブ毎の処理　**※ジョブ追加時、要変更**
-  - player　プレイヤー毎の処理 (@sで呼び出される)
-  - tick　毎ティック行われる処理
-  - ui　UI処理
-  - その他
-- item_modifiers　アイテム加工処理　**※ジョブ追加時、要変更**
-- predicates　高速boolean関数の定義
+## ファイルツリー
+```
+data
+  ├─joan
+  │  ├─advancements
+  │  │      inv_change.json インベントリ変更時に変更時処理を呼び出す
+  │  │
+  │  ├─functions
+  │  │  │  gameend.mcfunction ゲーム終了時処理
+  │  │  │  gamestart.mcfunction ゲーム開始時処理
+  │  │  │  inv_change.mcfunction インベントリ変更時処理(UIのチェック)
+  │  │  │  joinstart.mcfunction 参加者募集開始処理
+  │  │  │  load.mcfunction 初期設定処理(スコアの定義等)
+  │  │  │
+  │  │  ├─job 各ジョブ毎の処理をまとめたフォルダ ※ジョブ追加時、要変更
+  │  │  │  │  skill1.mcfunction スキル1を使用する(各ジョブへ処理を渡す) *要変更
+  │  │  │  │  skill2.mcfunction スキル2を使用する(各ジョブへ処理を渡す) *要変更
+  │  │  │  │  skill3.mcfunction スキル3を使用する(各ジョブへ処理を渡す) *要変更
+  │  │  │  │
+  │  │  │  ├─1as フォルダ名はジョブID+ジョブ名(順番に並べたいからIDを含めてる)
+  │  │  │  │      join.mcfunction このジョブに参加する処理(joiningから呼び出される)
+  │  │  │  │      skill1.mcfunction スキル1処理
+  │  │  │  │      skill2.mcfunction スキル2処理
+  │  │  │  │      skill3.mcfunction スキル3処理
+  │  │  │  │
+  │  │  │  ├─2fa
+  │  │  │  │      join.mcfunction
+  │  │  │  │      skill1.mcfunction
+  │  │  │  │      skill2.mcfunction
+  │  │  │  │      skill3.mcfunction
+  │  │  │  │
+  │  │  │  ├─3na
+  │  │  │  │      join.mcfunction
+  │  │  │  │      skill1.mcfunction
+  │  │  │  │      skill2.mcfunction
+  │  │  │  │      skill3.mcfunction
+  │  │  │  │
+  │  │  │  └─4wo
+  │  │  │          join.mcfunction
+  │  │  │          skill1.mcfunction
+  │  │  │          skill2.mcfunction
+  │  │  │          skill3.mcfunction
+  │  │  │
+  │  │  ├─player プレイヤー毎の処理 (プレイヤーによって呼び出される)
+  │  │  │      ct1.mcfunction スキル1のクールタイムを1tick分進める
+  │  │  │      ct2.mcfunction スキル2のクールタイムを1tick分進める
+  │  │  │      ct3.mcfunction スキル3のクールタイムを1tick分進める
+  │  │  │      death.mcfunction 死亡時の処理
+  │  │  │      logout.mcfunction ログアウト時の処理
+  │  │  │      reward.mcfunction 報酬を受取る
+  │  │  │      useskill.mcfunction スキル用アイテムが使用された時の処理
+  │  │  │      
+  │  │  ├─tick
+  │  │  │      .mcfunction ティック毎の処理(状況に応じて↓のfuncを呼び出す)
+  │  │  │      gaming.mcfunction ゲーム中の1tick処理(システム用)
+  │  │  │      joining.mcfunction 参加者募集中の1tick処理(システム用) *要変更
+  │  │  │      player.mcfunction ゲーム中の1tick処理(プレイヤー1人分の処理)
+  │  │  │
+  │  │  └─ui 呼び出したプレイヤーのUIを設定する処理群
+  │  │          .mcfunction インベントリのUIを作る
+  │  │          clear.mcfunction UI用アイテムをインベントリから消す
+  │  │          skill1.mcfunction スキル1のUIを設定・修正
+  │  │          skill2.mcfunction スキル2のUIを設定・修正
+  │  │          skill3.mcfunction スキル3のUIを設定・修正
+  │  │
+  │  ├─item_modifiers アイテム加工処理 ※ジョブ追加時、要変更
+  │  │      ct1.json スキル1のクールタイムのグラフ表示を行う
+  │  │      ct2.json スキル2のクールタイムのグラフ表示を行う
+  │  │      ct3.json スキル3のクールタイムのグラフ表示を行う
+  │  │      skill1.json スキル1用アイテムの名前・説明他を設定する *要変更
+  │  │      skill2.json スキル2用アイテムの名前・説明他を設定する *要変更
+  │  │      skill3.json スキル3用アイテムの名前・説明他を設定する *要変更
+  │  │
+  │  └─predicates 高速boolean関数の定義
+  │      │  player.json プレイヤーかどうかをチェックする
+  │      │
+  │      ├─item
+  │      │      skill1.json そのEntityがスキル1のUI用アイテムかチェックする
+  │      │      skill2.json そのEntityがスキル2のUI用アイテムかチェックする
+  │      │      skill3.json そのEntityがスキル3のUI用アイテムかチェックする
+  │      │
+  │      └─ui
+  │              all_ok.json インベントリUIが正しく設定されているかのチェック
+  │              skill1_ok.json インベントリUI(スキル1)が正しいか
+  │              skill2_ok.json インベントリUI(スキル2)が正しいか
+  │              skill3_ok.json インベントリUI(スキル3)が正しいか
+  │
+  └─minecraft
+      └─tags
+          └─functions
+                  load.json
+                  tick.json
+```
 
-それぞれについては各フォルダのreadmeにて
+### 大まかな処理の流れ
+```
+load.mcfunction 各種変数/定数の定義
+joinstart.mcfunction 募集開始
+
+参加募集中の繰り返し(タイマー終了まで)
+{
+  joining.mcfunction 募集中tick処理(各job の join.mcfunction を呼び出す)
+}
+
+gamestart.mcfunction ゲーム開始時処理
+
+ゲーム中の繰り返し(タイマー終了 or 残り１人まで)
+{
+  gaming.mcfunction ゲーム中tick処理(システム用)
+  player.mcfunction 全プレイヤーに以下を実行
+  {
+    スキルアイテム使用時 function/player/useskill 実行
+    クールタイム中ならクールタイムの更新と表示を行う tick/player/ct1
+    死んでたら player/death 実行(+報酬配り)
+    ログアウトしてたら player/logout 実行
+  }
+}
+
+gameend.mcfunction ゲーム終了処理(+生き残りへ報酬配り)
+
+```
 
 ## 主な要件
 - プレイヤー同士が戦うPVPゲーム
@@ -37,7 +146,7 @@
   - ゲーム終了時UI削除
   - 範囲収縮（未実装）
 
-### 要件をこなすために
+### 要件を解決するためにどうしたか
 - 非ゲーム状態/募集中状態/ゲーム中状態 とゲームの状態が遷移する
   - ゲーム状態のフラグをスコア(グローバル)で保持する。
 
@@ -61,9 +170,9 @@
   - クールタイムの数値は全てのジョブで同じにしたら便利そう
     - それだとジョブによってクールタイムが違うという条件から外れてしまう
       - 1ティック当たりの変化量を１ではなくすれば解決しそう
-        - プレイヤーにCT変化量をスコアで持たせることにする
+        - プレイヤー毎にCT変化量をスコアで持たせることにする
     - CT最大値が100だと変化量が少数になって非常に不便
-      - 100の倍数でおっきい数字、1000000あたりをCT最大値にしよう
+      - 100の倍数でおっきい数字、1000000あたりをCT最大値にする
   - クールタイムの仕様が決定
   1. スキルを使用すると、スコアCTに0が入る
   1. CTが1000000以上のプレイヤーはスキルが使用できる
@@ -71,3 +180,4 @@
   1. 毎ティック、全てのプレイヤーは CT に CTD を加算する
   1. 毎ティック、スキルUIアイテムの耐久値を CT * 0.000001 に変更する
 
+以上を踏まえて実装。
