@@ -2,7 +2,7 @@
 
 
 # スキル用アイテムが使用されたら、スキルアイテム使用ファンクションへ進む
-execute if score @s joan.use matches 1.. run function joan:skill/use
+execute if score @s joan.use matches 1.. run function joan:player/useskill
 
 
 # スキルがクールタイム中なら クールタイム中の処理を行う

@@ -1,7 +1,7 @@
 ###############################
 # プレイヤー全員に それぞれのtickをやらせる
 ###############################
-execute as @a if predicate joan:player at @s run function joan:tick/player/
+execute as @a if predicate joan:player at @s run function joan:tick/player
 
 
 ###############################
