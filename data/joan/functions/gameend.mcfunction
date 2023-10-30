@@ -14,3 +14,4 @@ scoreboard players reset @a joan.job
 
 # ゲームの状態フラグを ゲームしてない状態にする
 scoreboard players set #progress joan.v 0
+
